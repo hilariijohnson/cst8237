@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"N:\\UE4Lab1\\Source\\UE4Lab1\\UE4Lab1.Build.cs",
-		"N:\\UE4Lab1\\Source\\UE4Lab1.Target.cs",
-		"N:\\UE4Lab1\\Source\\UE4Lab1Editor.Target.cs"
-	],
-	"EngineVersion": "5.3.2"
-}
