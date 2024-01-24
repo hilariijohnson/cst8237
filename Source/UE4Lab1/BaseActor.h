@@ -19,7 +19,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Root Component");
 	class USceneComponent* RootTransformComponent;
 	
-	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Root Component");
+	UPROPERTY(BlueprintReadWrite, VisibleAnywhere, Category = "Actor Visual");
 	class UStaticMeshComponent* Mesh;
 
 protected:

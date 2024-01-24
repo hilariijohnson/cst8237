@@ -18,6 +18,12 @@ public:
 	UPROPERTY(EditInstanceOnly, Category = "Movement Point")
 	AActor * FirstPoint;
 
+	UPROPERTY(EditInstanceOnly, Category = "Movement Point")
+	AActor * SecondPoint;
+
+private:
+	AActor * CurrentPoint;
+	void MoveToNextPoint();
 
 protected:
 	// Called when the game starts or when spawned
@@ -25,6 +31,6 @@ protected:
 
 public:	
 	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	virtual void Tick(float DeltaTime);
 
 };

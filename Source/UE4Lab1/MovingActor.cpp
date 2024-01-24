@@ -11,11 +11,24 @@ AMovingActor::AMovingActor()
 
 }
 
+void AMovingActor::MoveToNextPoint()
+{
+	if (CurrentPoint == NULL || CurrentPoint == SecondPoint) {
+
+		CurrentPoint = FirstPoint;
+
+	}
+	else
+	{
+		CurrentPoint = SecondPoint;
+	}
+}
+
 // Called when the game starts or when spawned
 void AMovingActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	MoveToNextPoint();
 }
 
 // Called every frame
@@ -23,5 +36,12 @@ void AMovingActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	if (!FirstPoint || !SecondPoint) {
+		return;
+	}
+
+	if (CurrentPoint) {
+		FVector delta = (GetActorLocation() - CurrentPoint->GetActorLocation());
+	}
 }
 
