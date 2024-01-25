@@ -16,10 +16,10 @@ public:
 	AMovingActor();
 
 	UPROPERTY(EditInstanceOnly, Category = "Movement Point")
-	AActor * FirstPoint;
+	class AActor * FirstPoint;
 
 	UPROPERTY(EditInstanceOnly, Category = "Movement Point")
-	AActor * SecondPoint;
+	class AActor * SecondPoint;
 
 private:
 	AActor * CurrentPoint;

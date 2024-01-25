@@ -16,36 +16,16 @@ AOrbitActor::AOrbitActor()
 void AOrbitActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	Reset();
 }
 
-// Called every frame
-void AOrbitActor::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 
-	if(RotateAroundActor) {
-
-		CurrentAngle += (RotationSpeed * DeltaTime);
-		if(CurrentAngle > 360.f){
-			CurrentAngle -= 360.f;
-		}
-	}
-
-	FVector NewLocation = RotateAroundActor->GetActorLocation() + RotationRadius.RotateAngleAxis(CurrentAngle,RotationAxis);
-	SetActorLocation(NewLocation);
-
-	FRotator NewRotation = GetActorRotation();
-	NewRotation.Yaw += CurrentAngle;
-	SetActorRotation(NewRotation);
-
-}
 
 void AOrbitActor::Reset()
 {
 	CurrentAngle = InitialRotationAngle;
 
-	if (!RotateAroundActor) {
+	if (RotateAroundActor == nullptr) {
 
 		return;
 	}
@@ -56,3 +36,24 @@ void AOrbitActor::Reset()
 	}
 }
 
+// Called every frame
+void AOrbitActor::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (RotateAroundActor != nullptr) {
+
+		CurrentAngle += (RotationSpeed * DeltaTime);
+		if (CurrentAngle > 360.0f) {
+			CurrentAngle -= 360.0f;
+		}
+
+
+		const FVector NewLocation = RotateAroundActor->GetActorLocation() + RotationRadius.RotateAngleAxis(CurrentAngle, RotationAxis);
+		SetActorLocation(NewLocation);
+
+		FQuat NewRotation = FRotator(0,CurrentAngle,0).Quaternion();
+		SetActorRotation(NewRotation);
+
+	}
+}
