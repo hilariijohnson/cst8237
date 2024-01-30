@@ -22,7 +22,7 @@ public:
 	class AActor * SecondPoint;
 
 private:
-	AActor * CurrentPoint;
+	class AActor * CurrentPoint;
 	void MoveToNextPoint();
 
 protected:

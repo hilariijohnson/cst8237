@@ -44,6 +44,7 @@ void AOrbitActor::Tick(float DeltaTime)
 	if (RotateAroundActor != nullptr) {
 
 		CurrentAngle += (RotationSpeed * DeltaTime);
+
 		if (CurrentAngle > 360.0f) {
 			CurrentAngle -= 360.0f;
 		}

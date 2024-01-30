@@ -40,7 +40,7 @@ void AMovingActor::Tick(float DeltaTime)
 		return;
 	}
 
-	if (CurrentPoint) {
+	if (CurrentPoint != nullptr) {
 
 		FVector delta = (GetActorLocation() - CurrentPoint->GetActorLocation());
 		float distance =  delta.Size();
@@ -56,8 +56,8 @@ void AMovingActor::Tick(float DeltaTime)
 		NewLookAt.Roll = 0.0f;
 		NewLookAt.Yaw += -180.0f;
 
-		FQuat lerprotation = FMath::Lerp(FQuat(GetActorRotation()), FQuat(NewLookAt), 0.08f);
-		SetActorRotation(lerprotation);
+		FQuat slerprotation = FMath::Lerp(FQuat(GetActorRotation()), FQuat(NewLookAt), 0.08f);
+		SetActorRotation(slerprotation);
 
 		FVector lerplocation = FMath::VInterpConstantTo(GetActorLocation(), CurrentPoint->GetActorLocation(), DeltaTime, 600.f);
 		SetActorLocation(lerplocation);
